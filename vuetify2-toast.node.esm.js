@@ -289,7 +289,7 @@ var VueToastGroup = {
     this.$set(this.$toasts, name, toastProp);
   },
   beforeDestroy: function beforeDestroy() {
-    this.$delete(this, this.name);
+    this.$set(this, this.name, null);
   },
   render: function render(h) {
     var _this = this;
@@ -345,9 +345,9 @@ function index (Vue) {
       if (group in toasts) {
         toasts[group] = _objectSpread(_objectSpread(_objectSpread(_objectSpread(_objectSpread({}, toasts[group]), prop), color ? {
           color: color
-        } : {}), props(prepend ? {
+        } : {}), prepend ? {
           prepend: prepend
-        } : {})), {}, {
+        } : {}), {}, {
           value: true
         });
       }

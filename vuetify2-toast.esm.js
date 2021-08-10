@@ -188,7 +188,7 @@ const VueToastGroup = {
   },
 
   beforeDestroy() {
-    this.$delete(this, this.name);
+    this.$set(this, this.name, null);
   },
 
   render(h) {
@@ -245,7 +245,7 @@ function index (Vue) {
           ...(color ? {
             color
           } : {}),
-          ...props(prepend ? {
+          ...(prepend ? {
             prepend
           } : {}),
           value: true

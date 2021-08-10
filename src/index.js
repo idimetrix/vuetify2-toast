@@ -189,7 +189,7 @@ const VueToastGroup = {
     this.$set(this.$toasts, name, toastProp);
   },
   beforeDestroy() {
-    this.$delete(this, this.name);
+    this.$set(this, this.name, null);
   },
   render(h) {
     return h(
@@ -264,7 +264,7 @@ export default function (Vue) {
           ...toasts[group],
           ...prop,
           ...(color ? { color } : {}),
-          ...props(prepend ? { prepend } : {}),
+          ...(prepend ? { prepend } : {}),
           value: true,
         };
       }
