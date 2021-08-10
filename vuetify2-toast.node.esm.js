@@ -330,7 +330,9 @@ function index (Vue) {
   var _arguments = arguments;
   var toasts = {};
   var toast = {
-    show: function show(group, prop, color, prepend) {
+    show: function show(group, prop, color) {
+      var prepend = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
+
       if (_arguments.length === 1) {
         prop = group;
         group = "default";
@@ -352,6 +354,9 @@ function index (Vue) {
         });
       }
     },
+    "default": function _default(group, prop) {
+      toast.show(group, prop, "default");
+    },
     success: function success(group, prop) {
       toast.show(group, prop, "success", "mdi-check-circle");
     },
@@ -363,6 +368,9 @@ function index (Vue) {
     },
     error: function error(group, prop) {
       toast.show(group, prop, "error", "mdi-alert-octagon-outline");
+    },
+    clear: function clear(group) {
+      toasts[group] = {};
     }
   };
   Object.defineProperty(Vue.prototype, "_toasts", {

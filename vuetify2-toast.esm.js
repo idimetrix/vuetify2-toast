@@ -227,7 +227,7 @@ const VueToastGroup = {
 function index (Vue) {
   const toasts = {};
   const toast = {
-    show: (group, prop, color, prepend) => {
+    show: (group, prop, color, prepend = null) => {
       if (arguments.length === 1) {
         prop = group;
         group = "default";
@@ -252,6 +252,9 @@ function index (Vue) {
         };
       }
     },
+    default: (group, prop) => {
+      toast.show(group, prop, "default");
+    },
     success: (group, prop) => {
       toast.show(group, prop, "success", "mdi-check-circle");
     },
@@ -263,6 +266,9 @@ function index (Vue) {
     },
     error: (group, prop) => {
       toast.show(group, prop, "error", "mdi-alert-octagon-outline");
+    },
+    clear: group => {
+      toasts[group] = {};
     }
   };
   Object.defineProperty(Vue.prototype, "_toasts", {
