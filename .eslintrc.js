@@ -8,7 +8,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: "module",
   },
-  "plugins": ["@babel", "@babel/plugin-proposal-class-properties"],
+  "plugins": ["@babel"],
   rules: {
     quotes: ["error", "double"],
   },

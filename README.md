@@ -1,5 +1,13 @@
 # Vuetify2-toast
 
+## Installation
+
+### NPM:
+#### npm i vuetify2-toast --save
+
+### YARN:
+#### yarn add vuetify2-toast
+
 ## Usage
 
 ``` js

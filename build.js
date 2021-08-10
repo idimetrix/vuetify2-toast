@@ -12,7 +12,7 @@ async function build(options, _outputOptions) {
       format: _outputOptions.format,
       exports: "named",
       file: path.resolve(__dirname, _outputOptions.filename),
-      name: "vuetify-toast2",
+      name: "vuetify2-toast",
     };
     const { output } = await bundle.generate(outputOptions);
     await bundle.write(outputOptions);
@@ -59,7 +59,7 @@ build(
   },
   {
     format: "umd",
-    filename: "vuetify-toast2.js",
+    filename: "vuetify2-toast.js",
   }
 );
 
@@ -90,7 +90,7 @@ build(
   },
   {
     format: "esm",
-    filename: "vuetify-toast2.esm.js",
+    filename: "vuetify2-toast.esm.js",
   }
 );
 
@@ -121,6 +121,6 @@ build(
   },
   {
     format: "esm",
-    filename: "vuetify-toast2.node.esm.js",
+    filename: "vuetify2-toast.node.esm.js",
   }
 );

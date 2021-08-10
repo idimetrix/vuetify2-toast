@@ -98,23 +98,17 @@ var defineProperty = createCommonjsModule(function (module) {
 });
 var _defineProperty = unwrapExports(defineProperty);
 
-var _props;
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
-var props = (_props = {
+var props = {
   name: {
     type: String,
     "default": "default"
   },
   color: {
     type: [String, undefined],
-    "default": undefined
-  },
-  timeout: {
-    type: [Number, undefined],
     "default": undefined
   },
   app: {
@@ -200,23 +194,28 @@ var props = (_props = {
   tile: {
     type: Boolean,
     "default": false
+  },
+  timeout: {
+    type: [Number, String],
+    "default": 5e3
+  },
+  top: {
+    type: Boolean,
+    "default": false
+  },
+  transition: {
+    type: [Boolean, String],
+    "default": "v-snack-transition"
+  },
+  vertical: {
+    type: Boolean,
+    "default": false
+  },
+  width: {
+    type: [Number, String, undefined],
+    "default": undefined
   }
-}, _defineProperty(_props, "timeout", {
-  type: [Number, String],
-  "default": 5e3
-}), _defineProperty(_props, "top", {
-  type: Boolean,
-  "default": false
-}), _defineProperty(_props, "transition", {
-  type: [Boolean, String],
-  "default": "v-snack-transition"
-}), _defineProperty(_props, "vertical", {
-  type: Boolean,
-  "default": false
-}), _defineProperty(_props, "width", {
-  type: [Number, String, undefined],
-  "default": undefined
-}), _props);
+};
 var propsName = [];
 
 for (var name in props) {
@@ -299,7 +298,7 @@ var VueToastGroup = {
       return h("v-snackbar", {
         scopedSlots: {
           "default": function _default() {
-            return h("div", [].concat(_toConsumableArray(item.prepend ? [h("v-icon", item.prepend)] : []), [!!item.$html ? h("span", {
+            return h("div", [].concat(_toConsumableArray(item.prepend ? [h("v-icon", item.prepend)] : []), [item.$html ? h("span", {
               domProps: {
                 innerHTML: item.$html
               }

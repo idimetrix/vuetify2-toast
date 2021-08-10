@@ -7,10 +7,6 @@ const props = {
     type: [String, undefined],
     default: undefined,
   },
-  timeout: {
-    type: [Number, undefined],
-    default: undefined,
-  },
   app: {
     type: Boolean,
     default: true,
@@ -204,7 +200,7 @@ const VueToastGroup = {
             default: () =>
               h("div", [
                 ...(item.prepend ? [h("v-icon", item.prepend)] : []),
-                !!item.$html
+                item.$html
                   ? h("span", {
                       domProps: {
                         innerHTML: item.$html,
